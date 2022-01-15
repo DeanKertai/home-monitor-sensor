@@ -11,10 +11,50 @@ sudo apt-get install libgpiod2
 python3 -m pip install -r requirements.txt
 ```
 
+## Environment Variables
+Before the script can be run, you need to create a `.env` file in the root
+directory with the following variables:
+```
+API_PASSWORD=<The API password for this device>
+API_URL=<Base API url>
+DEVICE_ID=<Alpha numeric string describing which sensor this is. ie: 'Garage'>
+
+```
+
 ## Run
 ```bash
 python3 main.py
 ```
+
+## Run as Service
+1. Create a service file
+    ```bash
+    sudo vim /etc/systemd/system/sensors.service
+    ```
+    Contents:
+    ```
+    [Unit]
+    Description=Home Monitor Sensors
+    After=multi-user.target
+    
+    [Service]
+    Type=simple
+    Restart=always
+    ExecStart=/usr/bin/python3 /home<USERNAME>/<PATH TO SCRIPT>
+    
+    [Install]
+    WantedBy=multi-user.target
+    ```
+1. Enable and start service
+    ```bash
+    sudo systemctl daemon-reload
+    sudo systemctl enable sensors
+    sudo systemctl start sensors
+    ```
+1. Make sure it's working
+    ```bash
+    sudo systemctl status sensors
+    ```
 
 
 ## Temperature/Humidity Circuit Diagram
