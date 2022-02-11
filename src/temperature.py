@@ -93,6 +93,9 @@ class TemperatureModule:
         )
         if response.status_code != 201:
             print(f'Failed to post temperature data: {response.status_code}')
+        if response.status_code == 401:
+            print('Clearing invalid token')
+            self.api_token = None
         self.temperature_buffer = []
         self.humidity_buffer = []
 
