@@ -18,7 +18,6 @@ directory with the following variables:
 API_PASSWORD=<The API password for this device>
 API_URL=<Base API url>
 DEVICE_ID=<Alpha numeric string describing which sensor this is. ie: 'Garage'>
-
 ```
 
 ## Run
@@ -38,6 +37,7 @@ python3 main.py
     After=multi-user.target
     
     [Service]
+    User=<USERNAME>
     Type=simple
     Restart=always
     ExecStart=/usr/bin/python3 /home<USERNAME>/<PATH TO SCRIPT>
