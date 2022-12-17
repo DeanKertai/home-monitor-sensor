@@ -17,7 +17,7 @@ load_dotenv()
 data_pin = board.D4
 
 class TemperatureModule:
-    def __init__(self, read_interval=5, post_interval=600):
+    def __init__(self, read_interval=5, post_interval=300):
         self.name = 'Temperature module'
         self.read_interval = read_interval
         self.post_interval = post_interval

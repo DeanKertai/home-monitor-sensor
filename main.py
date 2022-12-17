@@ -5,7 +5,7 @@ from src.temperature import TemperatureModule
 
 try:
     print('Starting sensors')
-    temperature = TemperatureModule(3, 600)
+    temperature = TemperatureModule(5, 300)
     while True:
         time.sleep(5)
 
